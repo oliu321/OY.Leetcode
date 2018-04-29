@@ -1,4 +1,4 @@
-// 82.4% need some review
+// 98.21% could be improved by using indexOf/substring in . breakup
 public class Solution {
     public IList<string> SubdomainVisits(string[] cpdomains) {
         Dictionary<string, int> cnts = new Dictionary<string, int>();

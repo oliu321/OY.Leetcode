@@ -1,4 +1,4 @@
-// 96.62% Tried multiple times
+// 96.62% Tried multiple times, the correctness of the algorithm can be proved inductively
 public class Solution {
     public int ArrayPairSum(int[] nums) {
         Array.Sort(nums);
