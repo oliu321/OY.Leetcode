@@ -1,7 +1,6 @@
-// 86.83%
+// 100%
 public class Solution {    
-    public int IslandPerimeter(int[,] grid) {
-        HashSet<int> neighbours = new HashSet<int>();
+    public int IslandPerimeter(int[,] grid) {        
         int h = grid.GetLength(0), w = grid.GetLength(1);
         int p = 0;
         for (int i = 0; i < h; ++i) {
@@ -11,20 +10,14 @@ public class Solution {
                 
                 int l = -1, r = -1, u = -1, d = -1;
                 int c = i * w + j;
-                if (j > 0)
-                    l = c - 1;
-                if (j < w - 1)
-                    r = c + 1;
-                if (i > 0)
-                    u = c - w;
-                if (i < h - 1)
-                    d = c + w;
-                
-                if (!neighbours.Contains(l)) ++p; else --p;
-                if (!neighbours.Contains(r)) ++p; else --p;
-                if (!neighbours.Contains(u)) ++p; else --p;
-                if (!neighbours.Contains(d)) ++p; else --p;
-                neighbours.Add(c);
+                if (j == 0 || grid[i, j - 1] == 0)
+                    ++p;
+                if (j == w - 1 || grid[i, j + 1] == 0)
+                    ++p;
+                if (i == 0 || grid[i - 1, j] == 0)
+                    ++p;
+                if (i == h - 1 || grid[i + 1, j] == 0)
+                    ++p;               
             }
         }
         

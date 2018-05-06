@@ -10,39 +10,25 @@ public class Solution {
         char lastc = 'p';
         for(int i = 0; i < S.Length; ++i) {
             if(S[i] == ' ') {
-                if(!isVowel){
-                    b.Append(lastc);
-                }
+                if(!isVowel) b.Append(lastc);                
                 b.Append("ma");
-                ++w;
-                for(int k = 0; k < w; ++k)
-                    b.Append('a');                
-                isFirstChar = true;
-                b.Append(' ');
+                b.Append('a', ++w);
+                isFirstChar = true;                
             }
-            else {
-                if(isFirstChar){
-                    isFirstChar = false;
-                    if(vowels.Contains(S[i])){
-                        isVowel = true;
-                        b.Append(S[i]);
-                    }
-                    else {
-                        isVowel = false;
-                        lastc = S[i];
-                    }                        
-                }
-                else
-                    b.Append(S[i]);
+            else if(isFirstChar){
+                isFirstChar = false;
+                isVowel = vowels.Contains(S[i]);
+                if (!isVowel){
+                    lastc = S[i];
+                    continue;
+                }                                    
             }
+            b.Append(S[i]);
         }
-         if(!isVowel){
-                    b.Append(lastc);
-                }
-                b.Append("ma");
-                ++w;
-                for(int k = 0; k < w; ++k)
-                    b.Append('a'); 
+        
+        if(!isVowel) b.Append(lastc);               
+        b.Append("ma");
+        b.Append('a', ++w);
         return b.ToString();
     }
 }
